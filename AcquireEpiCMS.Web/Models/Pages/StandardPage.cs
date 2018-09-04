@@ -17,7 +17,7 @@ namespace AcquireEpiCMS.Web.Models.Pages
             Description = "The page heading.",
             GroupName = SystemTabNames.Content,
             Order = 0)]
-        public virtual XhtmlString Heading { get; set; }
+        public virtual String Heading { get; set; }
 
         [CultureSpecific]
         [Display(
