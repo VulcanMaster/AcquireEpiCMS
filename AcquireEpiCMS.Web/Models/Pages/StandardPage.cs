@@ -21,6 +21,14 @@ namespace AcquireEpiCMS.Web.Models.Pages
 
         [CultureSpecific]
         [Display(
+            Name = "Main intro",
+            Description = "The main intro string area.",
+            GroupName = SystemTabNames.Content,
+            Order = 0)]
+        public virtual string MainIntro { get; set; }
+
+        [CultureSpecific]
+        [Display(
             Name = "Main body",
             Description = "The main body will be shown in the main content area of the page, using the XHTML-editor you can insert for example text, images and tables.",
             GroupName = SystemTabNames.Content,

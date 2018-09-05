@@ -1,0 +1,16 @@
+﻿@model AcquireEpiCMS.Web.Models.Pages.StartPage
+
+@{
+    Layout = "~/Views/Shared/_Root.cshtml";
+}
+<div class="row">
+    <div class="col-md-6">
+        <h1>
+            @Html.PropertyFor(x => x.PageName)
+        </h1>
+        <p class="lead">
+            @Html.PropertyFor(x => x.MainIntro)
+        </p> 
+        @Html.PropertyFor(x => x.MainBody)
+    </div>
+</div>
