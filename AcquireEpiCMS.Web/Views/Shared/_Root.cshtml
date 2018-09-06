@@ -1,20 +1,21 @@
-﻿
-@{
-    Layout = null; 
-    ViewBag.Title = "Index";
-}
+﻿@using AcquireEpiCMS.Web.Helpers
 
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link href="~/Content/bootstrap/bootstrap.min.css" rel="stylesheet">
-    <title>_Root</title>
+    <title>Acquire EPiServer</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" crossorigin="anonymous" />
 </head>
 <body>
     <div class="container">
+        @{ Html.RenderMainNavigation(); }
         @RenderBody()
     </div>
+    
+
+    <script src="~/Scripts/jquery-3.0.0.slim.min.js" crossorigin="anonymous"></script>
+    <script src="~/Scripts/bootstrap.min.js" crossorigin="anonymous"></script>
+
 </body>
 </html>
