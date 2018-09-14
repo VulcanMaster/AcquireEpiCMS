@@ -1,10 +1,16 @@
 ﻿@model AcquireEpiCMS.Web.Models.Pages.StandardPage
 
 @{
-    Layout = "~/Views/Shared/_Root.cshtml";
+    Layout = "~/Views/Shared/_WithSubNavigation.cshtml";
 }
-<div class="row">
-    <div class="col-md-12">
+
+<h1>Heaya, you are on the Start Page!</h1>
+
+
+<p>
+    <h3>Photo</h3>
+    @Html.PropertyFor(x => x.Image, new { width = "100%" })
+</p>
         <h1>
             @Html.PropertyFor(x => x.PageName)
         </h1>
@@ -12,5 +18,7 @@
             @Html.PropertyFor(x => x.MainIntro)
         </p>
         @Html.PropertyFor(x => x.MainBody)
-    </div>
-</div>
+
+@section RightColumn { 
+    @Html.PropertyFor(x => x.RightColumnContent) 
+}

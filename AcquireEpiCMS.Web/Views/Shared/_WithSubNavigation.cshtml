@@ -1,0 +1,21 @@
+﻿@using AcquireEpiCMS.Web.Helpers
+@{
+    Layout = "~/Views/Shared/_Root.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="sub-navigation">
+            Left side!
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        @RenderBody()
+    </div>
+
+    <div class="col-md-3">
+        There could be rendered teaser
+        @RenderSection("RightColumn", false)
+    </div>
+</div>

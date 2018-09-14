@@ -1,0 +1,15 @@
+﻿@model AcquireEpiCMS.Web.Models.Pages.DishPage
+
+TEASER 
+
+<h3>
+    Dish Name: @Html.PropertyFor(p => p.Title)
+</h3>
+
+<p>
+    Dish Description: @Html.PropertyFor(p => p.Description)
+</p>
+
+<p>
+    @Html.PropertyFor(p => p.Picture, new { width = "200px" })
+</p>

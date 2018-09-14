@@ -13,6 +13,54 @@ namespace AcquireEpiCMS.Web.Helpers
     public static class NavigationHelpers
     {
 
+        public static void RenderLeftNavigatio(this HtmlHelper html,
+            PageReference rootLink = null,
+            ContentReference contentLink = null,
+            bool includeRoot = true,
+            IContentLoader contentLoader = null)
+        {
+            rootLink = rootLink ?? ContentReference.StartPage;
+
+            contentLink = contentLink ?? html.ViewContext.RequestContext.GetContentLink();
+
+            contentLoader = contentLoader ?? ServiceLocator.Current.GetInstance<IContentLoader>();
+
+            var urlResolver = ServiceLocator.Current.GetInstance<UrlResolver>();
+
+            var topLevelPages = contentLoader.GetChildren<PageData>(rootLink);
+
+            var writer = html.ViewContext.Writer;
+
+            foreach (var topLevelPage in topLevelPages)
+            {
+                var pageUrl = urlResolver.GetVirtualPath(topLevelPage.ContentLink).VirtualPath;
+
+                writer.WriteLine("<p><a href=/"+ pageUrl+ ">" + topLevelPage.Name + "</a></p>");
+            }
+        }
+
+        private static IEnumerable<PageReference> NavigationPath(ContentReference contentLink, IContentLoader contentLoader)
+        {
+            //Find all pages between the current and the 
+            //"from" page, in top-down order. 
+            var path = contentLoader.GetAncestors(contentLink).Reverse()
+                .SkipWhile(x => ContentReference.IsNullOrEmpty(x.ParentLink)
+                ||
+                !x.ParentLink.CompareToIgnoreWorkID(ContentReference.StartPage))
+                .OfType<PageData>().Select(x => x.PageLink).ToList();
+            //In theory the current content may not be a page. 
+            //We check that and, if it is, add it to the end of 
+            //the content tree path. 
+            var currentPage = contentLoader.Get<IContent>(contentLink) as PageData;
+
+            if (currentPage != null)
+            {
+                path.Add(currentPage.PageLink);
+            }
+            return path;
+        }
+
+
         public static void RenderTwoLevelNavigation(this HtmlHelper html,
             PageReference rootLink = null,
             ContentReference contentLink = null,
@@ -47,11 +95,11 @@ namespace AcquireEpiCMS.Web.Helpers
                 var containChilds = contentLoader.GetChildren<PageData>(topLevelPage.ContentLink).Any();
                 if (containChilds)
                 {
-                    writer.WriteLine("<li class=\"nav-item dropdown show\">");
+                    writer.WriteLine("<li class=\"nav-item dropdown\">");
                     writer.WriteLine("<a class=\"nav-link dropdown-toggle\" href =\"" + pageUrl + "\" id =\"navbarDropdown\" role =\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">");
                     writer.WriteLine(topLevelPage.Name);
                     writer.WriteLine("</a>");
-                    writer.WriteLine("<div class=\"dropdown-menu show\" aria-labelledby=\"navbarDropdown\">");
+                    writer.WriteLine("<div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">");
 
                     var Childs = contentLoader.GetChildren<PageData>(topLevelPage.ContentLink);
                     if (Childs != null)

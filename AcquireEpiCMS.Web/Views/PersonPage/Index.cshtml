@@ -1,0 +1,22 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@model AcquireEpiCMS.Web.Models.Pages.PersonPage
+<div>
+    <p>
+        <h3>Name:</h3>
+        @Html.PropertyFor(m => m.PersonName)
+    </p>
+
+    <p>
+        <h3>Surname:</h3>
+        @Html.PropertyFor(m => m.PersonSurname)
+    </p>
+
+    <p>
+        <h3>Photo</h3>
+        @Html.PropertyFor(x => x.PersonPhoto, new { width = "10%" })
+    </p>
+
+
+</div>
+

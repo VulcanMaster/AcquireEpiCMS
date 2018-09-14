@@ -1,0 +1,22 @@
+﻿@model AcquireEpiCMS.Web.Models.Pages.StartPage
+
+@{
+    Layout = "~/Views/Shared/_WithSubNavigation.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+        <h1>
+            @Html.PropertyFor(x => x.PageName)
+        </h1>
+        <p class="lead">
+            @Html.PropertyFor(x => x.MainIntro)
+        </p> 
+        <p class="lead" @Html.EditAttributes(x => x.MainIntro)></p>
+        @Html.PropertyFor(x => x.MainBody)
+    </div>
+</div>
+
+@*@if (Model.Image != null && !Model.Image.IsEmpty())
+{ <img src="@Model.Image" @Html.EditAttributes(x => x.Image) /> }
+else if (EPiServer.Editor.PageEditing.PageIsInEditMode)
+{ <div @Html.EditAttributes(x => x.Image) style="width: 100%;"></div> }*@

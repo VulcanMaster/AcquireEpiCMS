@@ -9,8 +9,13 @@
 </head>
 <body>
     <div class="container">
-        @{ Html.RenderTwoLevelNavigation(); }
-        @RenderBody()
+        <div class="row">
+            @{ Html.RenderMainNavigation(); }
+        </div>
+        <div class="row">
+            @RenderBody()    
+        </div>
+        
     </div>
     
 

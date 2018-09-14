@@ -4,6 +4,8 @@ using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using EPiServer.SpecializedProperties;
+using EPiServer.Web;
+using EPiServer;
 
 namespace AcquireEpiCMS.Web.Models.Pages
 {
@@ -16,7 +18,7 @@ namespace AcquireEpiCMS.Web.Models.Pages
             Name = "Heading",
             Description = "The page heading.",
             GroupName = SystemTabNames.Content,
-            Order = 0)]
+            Order = 1)]
         public virtual String Heading { get; set; }
 
         [CultureSpecific]
@@ -24,7 +26,7 @@ namespace AcquireEpiCMS.Web.Models.Pages
             Name = "Main intro",
             Description = "The main intro string area.",
             GroupName = SystemTabNames.Content,
-            Order = 0)]
+            Order = 2)]
         public virtual string MainIntro { get; set; }
 
         [CultureSpecific]
@@ -32,7 +34,15 @@ namespace AcquireEpiCMS.Web.Models.Pages
             Name = "Main body",
             Description = "The main body will be shown in the main content area of the page, using the XHTML-editor you can insert for example text, images and tables.",
             GroupName = SystemTabNames.Content,
-            Order = 1)]
+            Order = 3)]
         public virtual XhtmlString MainBody { get; set; }
+
+
+        [Display(Order = 4)]
+        [UIHint(UIHint.Image)]
+        public virtual Url Image { get; set; }
+
+        [Display(Order = 10)]
+        public virtual ContentArea RightColumnContent { get; set; }
     }
 }

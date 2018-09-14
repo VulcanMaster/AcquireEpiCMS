@@ -1,0 +1,36 @@
+﻿@model AcquireEpiCMS.Web.Models.Pages.DishPage
+
+@{ 
+    Layout = null;
+}
+
+<h3>
+    Dish Name: @Html.PropertyFor( p=> p.Title)
+</h3>
+
+<p>
+    Dish Description: @Html.PropertyFor(p => p.Description)
+</p>
+
+<p>
+    @Html.PropertyFor(p => p.Picture)
+</p>
+
+@*@{
+    Layout = "~/Views/Shared/_WithSubNavigation.cshtml";
+}
+
+<h1>Heaya, you are on the Start Page!</h1>
+
+
+<p>
+    <h3>Photo</h3>
+    @Html.PropertyFor(x => x.Image, new { width = "100%" })
+</p>
+<h1>
+    @Html.PropertyFor(x => x.PageName)
+</h1>
+<p class="lead">
+    @Html.PropertyFor(x => x.MainIntro)
+</p>
+@Html.PropertyFor(x => x.MainBody)*@

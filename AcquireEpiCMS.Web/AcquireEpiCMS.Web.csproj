@@ -219,20 +219,28 @@
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ItemGroup>
+    <Compile Include="Controllers\DishPageController.cs" />
+    <Compile Include="Controllers\MiddlePageController.cs" />
+    <Compile Include="Controllers\PersonPageController.cs" />
     <Compile Include="Controllers\StandardPageController.cs" />
-    <Compile Include="Controllers\StartController.cs" />
+    <Compile Include="Controllers\StartPageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\NavigationHelpers.cs" />
+    <Compile Include="Models\Blocks\TeaserBlock.cs" />
+    <Compile Include="Models\Media\ImageFile.cs" />
+    <Compile Include="Models\Pages\DishPage.cs" />
+    <Compile Include="Models\Pages\MiddlePage.cs" />
+    <Compile Include="Models\Pages\NoControllerPage.cs" />
+    <Compile Include="Models\Pages\NodeEmptyPage.cs" />
+    <Compile Include="Models\Pages\PersonPage.cs" />
     <Compile Include="Models\Pages\StandardPage.cs" />
     <Compile Include="Models\Pages\StartPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Business\" />
-    <Folder Include="Models\Blocks\" />
-    <Folder Include="Models\Media\" />
     <Folder Include="Models\Properties\" />
     <Folder Include="Static\" />
   </ItemGroup>
@@ -245,6 +253,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Icons\Home.png" />
     <Content Include="Html\Bootstrap Test.html" />
     <Content Include="Html\Refactoring purposes.html" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -304,7 +313,7 @@
     <Content Include="modules\_protected\EPiServer.Cms.TinyMce\web.config" />
     <Content Include="modules\_protected\EPiServer.Cms.TinyMce\EPiServer.Cms.TinyMce.zip" />
     <Content Include="Views\StandardPage\Index.cshtml" />
-    <Content Include="Views\Start\Index.cshtml" />
+    <Content Include="Views\StartPage\Index.cshtml" />
     <Content Include="Views\Shared\_Root.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
@@ -315,6 +324,17 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Shared\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_WithSubNavigation.cshtml" />
+    <Content Include="Views\PersonPage\Index.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Image.cshtml" />
+    <Content Include="Views\Shared\StandardPage.cshtml" />
+    <Content Include="Views\MiddlePage\Index.cshtml" />
+    <Content Include="Views\DishPage\Index.cshtml" />
+    <Content Include="Views\Shared\DishPage.cshtml" />
+    <Content Include="Views\Shared\TeaserBlock.cshtml" />
+    <Content Include="Views\Shared\NoControllerPage.cshtml" />
+    <Content Include="Views\NoControllerPage\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
